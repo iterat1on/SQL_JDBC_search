@@ -1,0 +1,115 @@
+CREATE TABLE `univ`.`name_cid` (
+  `courseName_id` INT NOT NULL,
+  `dept_name` VARCHAR(45) NULL,
+  `course_id` VARCHAR(45) NULL,
+  PRIMARY KEY (`courseName_id`));
+
+CREATE TABLE `univ`.`course` (
+  `course_id` VARCHAR(45) NOT NULL,
+  `title` VARCHAR(45) NULL,
+  `credits` INT NULL,
+  PRIMARY KEY (`course_id`));
+
+CREATE TABLE `univ`.`course_2` (
+  `dept_name` VARCHAR(45) NOT NULL,
+  `course_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`dept_name`, `course_id`));
+
+
+
+
+CREATE TABLE `univ`.`section` (
+  `sec_id` INT NOT NULL,
+  `semester` VARCHAR(45) NOT NULL,
+  `year` INT NOT NULL,
+  `course_id` VARCHAR(45) NOT NULL,
+  `class_slot_id` INT NOT NULL,
+  PRIMARY KEY (`sec_id`, `semester`, `year`, `course_id`, `class_slot_id` ));
+
+CREATE TABLE `univ`.`department` (
+  `dept_name` VARCHAR(45) NOT NULL,
+  `building` INT NULL,
+  `budget` INT NULL,
+  `I_id` INT NULL,
+  `S_id` INT NULL,
+  PRIMARY KEY (`dept_name`));
+
+ALTER TABLE `univ`.`department` 
+CHANGE COLUMN `dept_name` `dept_name` VARCHAR(45) NULL ,
+DROP PRIMARY KEY;
+;
+
+
+CREATE TABLE `univ`.`pre_req` (
+  `course_id` VARCHAR(45) NOT NULL,
+  `prereq_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`course_id`, `prereq_id`));
+
+CREATE TABLE `univ`.`teaches` (
+  `ID` INT NOT NULL,
+  `sec_id` INT NOT NULL,
+  `semester` VARCHAR(45) NOT NULL,
+  `year` INT NOT NULL,
+  `course_id` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID`, `sec_id`, `semester`, `year`, `course_id`));
+
+CREATE TABLE `univ`.`takes` (
+  `ID` INT NOT NULL,
+  `sec_id` INT NOT NULL,
+  `semester` VARCHAR(45) NOT NULL,
+  `year` INT NOT NULL,
+  `course_id` VARCHAR(45) NOT NULL,
+  `grade` FLOAT NULL,
+  PRIMARY KEY (`ID`, `sec_id`, `semester`, `year`, `course_id`));
+
+
+
+CREATE TABLE `univ`.`project` (
+  `project_id` INT NOT NULL,
+  `S_id` INT NOT NULL,
+  `sec_id` INT NOT NULL,
+  `semester` VARCHAR(45) NOT NULL,
+  `year` INT NOT NULL,
+  `course_id` VARCHAR(45) NOT NULL,
+  `I_id` INT NOT NULL,
+  `score` INT NULL,
+  PRIMARY KEY (`project_id`, `S_id`, `sec_id`, `semester`, `year`, `course_id`));
+
+
+CREATE TABLE `univ`.`class_slot` (
+  `class_slot_id` INT NOT NULL,
+  `time_slot_id` INT NOT NULL,
+  `building` INT NULL,
+  `room_number` INT NULL,
+  PRIMARY KEY (`class_slot_id`));
+
+CREATE TABLE `univ`.`classroom` (
+  `building` INT NOT NULL,
+  `room_number` INT NOT NULL,
+  `capacity` INT NULL,
+  PRIMARY KEY (`building`, `room_number`));
+
+CREATE TABLE `univ`.`time_slot` (
+  `time_slot_id` INT NOT NULL,
+  `day` VARCHAR(45) NOT NULL,
+  `start_time` VARCHAR(45) NOT NULL,
+  `end_time` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`time_slot_id`));
+
+
+
+CREATE TABLE `univ`.`instructor` (
+  `ID` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `salary` INT NULL,
+  `dept_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID`));
+
+CREATE TABLE `univ`.`student` (
+  `ID` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `tot_cred` FLOAT NULL,
+  `dept_name` VARCHAR(45) NULL,
+  PRIMARY KEY (`ID`));
+
+

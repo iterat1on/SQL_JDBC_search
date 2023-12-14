@@ -1,0 +1,128 @@
+use univ;
+INSERT INTO name_cid (courseName_id, dept_name, course_id)
+VALUES 
+(1, "CSE", "CS-101"),
+(2, "CSE", "CS-201"),
+(3, "Stat", "Stat-101"),
+(4, "Stat", "Stat-201"),
+(5, "EE", "CS-201");
+
+use univ;
+INSERT INTO course (course_id, title, credits)
+VALUES 
+("CS-101", "DB",3),
+("CS-201", "OOP",3),
+("Stat-101","Regression",3),
+("Stat-201", "MVAnalysis",3);
+
+use univ;
+INSERT INTO course_2 (course_id, dept_name)
+VALUES 
+("CS-201", "EE"),
+("CS-201", "CSE"),
+("Stat-101", "Stat"),
+("Stat-201", "Stat");
+
+
+use univ;
+INSERT INTO class_slot (class_slot_id, time_slot_id, building, room_number)
+VALUES 
+(1, 1, 208,322),
+(2, 2, 208,311),
+(3, 3, 310,311),
+(6, 4, 310,706),
+(4, 5, 310,406),
+(5, 6, 310,409);
+
+
+
+use univ;
+INSERT INTO classroom (building, room_number, capacity)
+VALUES 
+(208, 322, 100),
+(208, 311, 200),
+(310, 311, 500),
+(310, 406, 50),
+(310, 706, 90),
+(310, 409, 80);
+
+use univ;
+INSERT INTO section (sec_id, semester, year, course_id, class_slot_id)
+VALUES 
+(1, "Fall", 2021,"CS-101", 1),
+(1, "Fall", 2022,"CS-201", 2),
+(1, "Spring", 2022,"Stat-101", 3),
+(1, "Winter", 2023,"Stat-201", 4),
+(1, "Spring", 2022,"Stat-101", 5), 
+(2, "Fall", 2022,"CS-201", 6); 
+
+use univ;
+INSERT INTO department (dept_name, building, budget, I_id, S_id)
+VALUES 
+("CSE", 208, 243233, null, 2020232),
+("CSE", 208, 243233, 20203374, null),
+("Stat", 310, 300000,20232221, 2022312),
+("EE", 310, 200000,20232233, 2022315);
+
+use univ;
+INSERT INTO pre_req (course_id, prereq_id)
+VALUES 
+("CS-201", "CS-101");
+
+use univ;
+INSERT INTO teaches (ID, sec_id, semester, year, course_id)
+VALUES 
+(20203374, 1, "Fall", 2022, "CS-101"),
+(20232221, 1, "Spring", 2022, "Stat-101"),
+(20232221, 1, "Winter", 2023, "Stat-201"),
+(20203374, 2, "Fall", 2021, "CS-201"),
+(20232233, 2, "Fall", 2022, "CS-201");
+
+use univ;
+INSERT INTO takes (ID, sec_id, semester, year, course_id, grade)
+VALUES 
+(2020232, 1, "Fall", 2022, "CS-101", 3.5),
+(2022312, 1, "Spring", 2022, "Stat-101", 4.5),
+(2022312, 1, "Winter", 2023, "Stat-201", 4.0),
+(2022312, 2, "Fall", 2021, "CS-201", 3.5),
+(2022315, 2, "Fall", 2022, "CS-201", 2.0),
+(2022315, 2, "Fall", 2022, "CS-101", 4.0);
+
+use univ;
+INSERT INTO time_slot (time_slot_id, day, start_time, end_time)
+VALUES 
+(1, "Mon", "10:30", "12:50"),
+(2, "Tue", "11:00", "14:00"),
+(3, "Wed", "11:00", "12:00"),
+(4, "Fri", "9:00", "10:50"),
+(5, "Thur", "9:00", "11:50"),
+(6, "Mon", "15:00", "18:00");
+
+use univ;
+INSERT INTO instructor (ID, name, salary, dept_name)
+VALUES 
+(20203374, "Junwoo", 100000, "CSE"),
+(20232221, "Jin", 80000, "Stat"),
+(20232233, "Geonho", 120000, "EE");
+
+
+use univ;
+INSERT INTO student (ID, name, tot_cred, dept_name)
+VALUES 
+(2020232, "Youngpyo", 13, "CSE"),
+(2022312, "Sangchul", 14, "Stat"),
+(2022315, "Daeho", 25, "EE");
+
+use univ;
+INSERT INTO `univ`.`project` (`project_id`, `S_id`, `sec_id`, `semester`, `year`, `course_id`, `I_id`, `score`)
+VALUES (1, 2020232, 1, 'Fall', 2022, 'CS-101', 20203374, 90),
+       (2, 2022312, 1, 'Spring', 2022, 'Stat-101', 20232221, 85),
+       (3, 2022312, 1, 'Winter', 2023, 'Stat-201', 20232221, 95),
+       (4, 2022312, 2, 'Fall', 2021, 'CS-201', 20203374, 88),
+       (5, 2022315, 2, 'Fall', 2022, 'CS-201', 20203374, 80),             
+       (6, 2020232, 1, 'Fall', 2022, 'CS-101', 20203374, 92),
+       (7, 2022312, 1, 'Spring', 2022, 'Stat-101', 20232221, 90),
+       (8, 2022312, 1, 'Winter', 2023, 'Stat-201', 20232221, 97),
+       (9, 2022312, 2, 'Fall', 2021, 'CS-201', 20203374, 89),
+       (10, 2022315, 2, 'Fall', 2022, 'CS-201', 20232233, 85),
+       (11, 2022315, 2, 'Fall', 2022, 'CS-101', 20203374, 100);      
